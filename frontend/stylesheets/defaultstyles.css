@@ -1,0 +1,7 @@
+button {
+    border-radius: 1vh;
+
+    min-height: 5vh;
+    min-width: 10vh;
+    background-color: rgb(196, 196, 17);
+}
