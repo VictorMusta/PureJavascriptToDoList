@@ -42,15 +42,21 @@
 
 
 .taskCard {
+    padding: 5px;
     border-radius: 1rem;
     border-color: rgb(196, 196, 17);
     border-style: groove;
-    min-width: 10rem;
-    height: 10%;
-    min-height: 10rem;
-    width: 15%;
+    min-width: 15%;
+    min-height: 15rem;
 }
 
 .selectedTask {
     border-color: rgb(209, 84, 16);
+}
+
+.titleField {
+    text-align: center;
+    width: 100%;
+    max-width: auto;
+    border-radius: 20px;
 }

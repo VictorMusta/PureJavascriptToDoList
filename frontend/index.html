@@ -2,15 +2,12 @@
 <!doctype html>
 <html>
     <head>  
-
         <title>Victor's javascript todolist</title>
         <script src="scripts/functions.js"></script>
         <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
         <link rel="stylesheet" href="stylesheets/defaultstyles.css" type="text/css">
-        <!-- <style src="style.css"></style> -->
     </head>
     <body>
-        
         <div id="mainDiv">
             <div id="testDiv"> 
                 <button type="button" onclick="myFunction()">Disable new Button</button>
@@ -19,10 +16,16 @@
             <div id="topBanner">
                 <h2>My pure JavaScript todolist</h2>
             </div>
-
+                <div>
+                </div>
             <div id="controlButtonsDiv">
+                <div>
+                <input type="text" id="taskTitleInput" placeholder="Task title">
                 <button class="taskButtons" id="addButton" onclick="newTask()">NEW</button>
-                <button class="taskButtons" id="deleteButton" onclick=deleteSelectedTask()>DELETE</button>
+
+                </div>
+
+                <button class="taskButtons" id="deleteButton" onclick="deleteSelectedTask()">DELETE</button>
                 <button class="taskButtons" id="deleteButton" onclick="deleteAllTasks()">CLEAR</button>
                 <button class="taskButtons" id="copyButton">COPY</button>
                 <button class="taskButtons" id="referenceButton">REFERENCE</button>
