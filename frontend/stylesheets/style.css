@@ -1,27 +1,31 @@
 #mainDiv {
     border-style: groove;
-    padding: 2rem;    
-    background-color: rgb(233, 233, 48);
+    padding: 2rem;
+    background-color: #f0db4f;
 
 }
+
 #topBanner {
     border-style: groove;
-    background-color: rgb(156, 156, 1);
+    background-color: #edd32c;
     border-radius: 1rem;
     padding: 1rem;
     text-align: center;
 }
+
 #controlButtonsDiv {
     border-style: groove;
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-radius: 1rem;
-    background-color: rgb(196, 196, 17);
+    background-color: #a4900e;
 }
+
 #taskListList {
     display: flex;
 }
+
 #taskListDiv1 {
     flex-wrap: wrap;
     max-height: 50%;
@@ -29,8 +33,11 @@
     padding: 1rem;
     display: flex;
     border-radius: 1rem;
-    background-color: rgb(252, 252, 88);
+    background-color: #f0db4f;
+    border-color: red;
+
 }
+
 #taskListDiv2 {
     gap: 1rem;
     padding: 1rem;
@@ -44,6 +51,8 @@
 .taskCard {
     padding: 5px;
     border-radius: 1rem;
+    background-color: #f7eba1;
+
     border-color: rgb(196, 196, 17);
     border-style: groove;
     min-width: 15%;

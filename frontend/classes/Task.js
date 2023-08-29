@@ -1,19 +1,22 @@
 export class Task {
+    #creationDate;
     #title;
     #color;
     #resolved;
-    constructor() {
-        this.#title = "Default Title";
-        this.#color = "rgb(255, 255, 130)";
+    constructor(title) {
+        this.#creationDate = Date.now()
+        this.#title = title;
+        this.#color = yellow;
         this.#resolved = false;
     }
     switchStatus() {
         this.#resolved = !this.#resolved;
     }
-    setTitle(newTitle){
+    setTitle(newTitle) {
         this.#title = newTitle;
     }
-    setColor(newColor){
+    setColor(newColor) {
         this.#color = newColor;
     }
 }
+"rgb(255, 255, 130)"
