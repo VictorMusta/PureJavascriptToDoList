@@ -2,6 +2,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 import datetime
 
 
@@ -18,6 +20,15 @@ class Todo(Base):
 
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, title={self.title!r}, date={self.date!r}, resolved={self.resolved!r})"
+
+
+engine = create_engine("postgresql:///:memory:", echo=True)
+Base.metadata.create_all(engine)
+with Session(engine) as session:
+    my_todo = Todo(title="cc", date=datetime.date.today())
+    session.add(my_todo)
+    session.commit()
+my_todo.__repr__()
 
 
 class TodoClass:
