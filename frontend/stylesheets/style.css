@@ -34,7 +34,6 @@
     display: flex;
     border-radius: 1rem;
     background-color: #f0db4f;
-    border-color: red;
 
 }
 
@@ -51,8 +50,7 @@
 .taskCard {
     padding: 5px;
     border-radius: 1rem;
-    background-color: #f7eba1;
-
+    /* background-color: #f7eba1; */
     border-color: rgb(196, 196, 17);
     border-style: groove;
     min-width: 15%;
