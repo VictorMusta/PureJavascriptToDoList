@@ -70,10 +70,13 @@ function newTask() {
         titleField.textContent = taskTitle
 
         //création d'un élément input pour modifier la couleur.
+        let colorTextField = document.createElement('p')
+        colorTextField.textContent = "Enter a color :"
+
         let colorField = document.createElement('input')
         colorField.setAttribute('type', "text")
         colorField.setAttribute('class', "colorField")
-        colorField.setAttribute('placeholder', "type a color to change")
+        colorField.setAttribute('placeholder', "type a color to change background color")
         colorField.setAttribute('oninput',"this.parentElement.setAttribute('style', `background-color: ${this.value}`)"
         // console.log(this.parentElement.id)"
         // // "taskElement.setAttribute('style', `background-color: ${colorField.textContent}`)"
@@ -86,10 +89,10 @@ function newTask() {
         // resolveButton.setAttribute("class", switchStatus())
 
         taskElement.appendChild(titleField)
+        taskElement.appendChild(colorTextField)
         taskElement.appendChild(colorField)
 
        
-        document.getElementById('taskListDiv1').appendChild(taskElement)
         document.getElementById('taskListDiv1').appendChild(taskElement)
 
     }
