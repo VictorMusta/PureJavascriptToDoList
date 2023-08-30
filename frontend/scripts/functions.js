@@ -11,17 +11,14 @@ class Task {
         this.#resolved = false;
     }
     switchStatus() {
-        console.log("status switched");
 
         this.#resolved = !this.#resolved;
     }
     setTitle(newTitle) {
-        console.log("title changed");
 
         this.#title = newTitle;
     }
     setColor(newColor) {
-        console.log("color changed");
 
         this.#color = newColor;
     }
@@ -31,7 +28,6 @@ class Task {
 }
 //déclaration des variables qui serviront plus tard à stocker nos tâches.
 let taskListOfObject1 = new Array()
-console.log(taskListOfObject1);
 
 let taskListOfObject2 = new Array()
 
@@ -78,7 +74,6 @@ function newTask() {
         colorField.setAttribute('class', "colorField")
         colorField.setAttribute('placeholder', "type a color to change background color")
         colorField.setAttribute('oninput',"this.parentElement.setAttribute('style', `background-color: ${this.value}`)"
-        // console.log(this.parentElement.id)"
         // // "taskElement.setAttribute('style', `background-color: ${colorField.textContent}`)"
 
         )
