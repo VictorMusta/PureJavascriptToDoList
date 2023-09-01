@@ -1,14 +1,15 @@
 from flask import Flask, request
-from models.Todo import Todo
+from models.Task import Task
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from datetime import datetime
-
-app = Flask(__name__)
+from functions.task_functions import TaskFunctions
 
 engine = create_engine(
-    "postgresql+psycopg2://todoAdmin:mdppostgres@localhost/postgres", echo=True
+    "postgresql+psycopg2://taskAdmin:mdppostgres@localhost/postgres", echo=True
 )
+
+app = Flask(__name__)
 
 
 @app.route("/")
@@ -22,49 +23,31 @@ def not_found(e):
     return "<p>T'as du te tromper de requete</p>"
 
 
-@app.post("/todo")
-def new_todo():
-    with Session(engine) as session:
-        my_todo = request.get_json()
-        todoObject = Todo(title=my_todo["Todo"]["title"], date=datetime.now())
-        session.add(todoObject)
-        session.commit()
-        return todoObject.as_dict()
+@app.post("/task")
+def new_task():
+    return TaskFunctions.new_task(request.get_json())
 
 
-@app.get("/todo")
-def get_todo():
-    with Session(engine) as session:
-        todoList = session.query(Todo).where(Todo.id == request.get_json()["id"])
-        return session.scalar(todoList).as_dict()
+@app.get("/task")
+def get_task():
+    return TaskFunctions.get_task(request.get_json()["id"])
 
 
-@app.get("/todos")
-def get_all_todo():
-    with Session(engine) as session:
-        todoList = [todoObject.as_dict() for todoObject in session.query(Todo).all()]
-        if todoList == []:
-            return "No Todo Found"
-        return todoList
+@app.patch("/task")
+def update_task():
+    return TaskFunctions.update_task(request.get_json())
 
 
-@app.delete("/todo")
-def delete_todo():
-    with Session(engine) as session:
-        content = request.get_json()
-        deletedTodos = session.query(Todo).where(Todo.id == content["id"]).delete()
-        if deletedTodos > 0:
-            session.commit()
-            return "todo n°" + str(content["id"]) + " successfully deleted"
-        else:
-            return "No Todo found."
+@app.get("/tasks")
+def get_all_task():
+    return TaskFunctions.get_all_task()
 
 
-@app.delete("/todos")
-def delete_all_todos():
-    with Session(engine) as session:
-        number_of_todos_found = session.query(Todo).delete()
-        if number_of_todos_found > 0:
-            session.commit()
-            return str(number_of_todos_found) + " Todo(s) cleared"
-        return "No todos found"
+@app.delete("/task")
+def delete_task():
+    return TaskFunctions.delete_task(request.get_json())
+
+
+@app.delete("/tasks")
+def delete_all_tasks():
+    return TaskFunctions.delete_all_tasks()
