@@ -1,8 +1,5 @@
 from flask import Flask, request
-from models.Task import Task
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-from datetime import datetime
 from functions.task_functions import TaskFunctions
 
 engine = create_engine(
@@ -17,10 +14,16 @@ def hello_world():
     return "<p>This is my pure Javascript's Flask's api! I Hope you enjoy it.</p>"
 
 
+@app.errorhandler(400)
+def bad_request(e):
+    # defining function
+    return "<p>BAD REQUEST customized error</p>"
+
+
 @app.errorhandler(404)
 def not_found(e):
     # defining function
-    return "<p>T'as du te tromper de requete</p>"
+    return "<p>NOT FOUND customized error</p>"
 
 
 @app.post("/task")

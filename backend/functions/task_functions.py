@@ -1,10 +1,10 @@
-from os import error
 from typing import Any
-from flask import Flask, request
+from flask import request, abort
 from models.Task import Task
 from sqlalchemy import create_engine, update
 from sqlalchemy.orm import Session
 from datetime import datetime
+from urllib.error import HTTPError
 
 engine = create_engine(
     "postgresql+psycopg2://taskAdmin:mdppostgres@localhost/postgres", echo=True
@@ -15,12 +15,24 @@ class TaskFunctions:
     @staticmethod
     def new_task(requestBody: dict):
         with Session(engine) as session:
-            taskObject = Task(
-                title=requestBody["Task"]["title"], date=datetime.now(), color="Yellow"
-            )
-            session.add(taskObject)
-            session.commit()
-            return taskObject.as_dict()
+            try:
+                if (
+                    requestBody.get("Task")
+                    and requestBody.get("Task").get("title")
+                    and requestBody.get("Task").get("title") != ""
+                ):
+                    taskObject = Task(
+                        title=requestBody["Task"]["title"],
+                        date=datetime.now(),
+                        color="Yellow",
+                    )
+                    session.add(taskObject)
+                    session.commit()
+                    return taskObject.as_dict()
+                else:
+                    abort(400)
+            except:
+                abort(400)
 
     @staticmethod
     def get_task(id=int) -> dict[str, Any]:
