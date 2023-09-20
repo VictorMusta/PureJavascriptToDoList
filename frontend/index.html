@@ -3,6 +3,7 @@
 <html>
     <head>  
         <title>Victor's javascript tasklist</title>
+        <script src="classes/Task.js"></script>
         <script src="scripts/functions.js"></script>
         <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
         <link rel="stylesheet" href="stylesheets/defaultstyles.css" type="text/css">
@@ -18,11 +19,9 @@
                 </div>
             <div id="controlButtonsDiv">
                 <div>
-                <input type="text" id="taskTitleInput" placeholder="Task title">
-                <button class="taskButtons" id="addButton" onclick="newTask()">NEW</button>
-
+                    <input type="text" id="taskTitleInput" placeholder="Task title">
+                    <button class="taskButtons" id="addButton" onclick="newTask()">NEW</button>
                 </div>
-
                 <button class="taskButtons" id="deleteButton" onclick="deleteSelectedTask()">DELETE</button>
                 <button class="taskButtons" id="deleteButton" onclick="deleteAllTasks()">CLEAR</button>
                 <button class="taskButtons" id="copyButton" onclick="moveSelectedTask(false)" hidden="true">COPY</button>
@@ -30,10 +29,11 @@
                 <button class="taskButtons" id="moveButton" onclick="moveSelectedTask(true)">MOVE</button>
             </div>
             <div class="taskListList">
+                <p>Liste1</p>
                 <div id="taskListDiv1"></div>
+                <p>Liste2</p>
                 <div id="taskListDiv2"></div>
             </div>
-            
         </div>
         
     </body>

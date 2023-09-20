@@ -5,9 +5,7 @@ let taskListOfObject1 = new Array()
 
 let taskListOfObject2 = new Array()
 
-function myFunction() {
-    document.getElementById("addButton").disabled = !document.getElementById("addButton").disabled
-}
+
 function newTask() {
     if (taskListOfObject1.length == 6) {
         alert("6 tasks is the limit!")
@@ -26,13 +24,13 @@ function newTask() {
         if (taskListOfObject1.length == 5) {
             document.getElementById("addButton").disabled = true
         }
-        let myTask = new Task(taskTitle, Date.now())
+        let myTask = new Task(taskTitle)
         taskListOfObject1.push(myTask)
         //création d'un div pour contenir tout le contenu d'une carte "tâche"
         let taskElement = document.createElement('div')
         taskElement.className = "taskCard"
-        taskElement.id = myTask.getCreationDate()
-        taskElement.setAttribute('onclick', `setSelectedTask(${myTask.getCreationDate()})`)
+        taskElement.id = myTask.id
+        taskElement.setAttribute('onclick', `setSelectedTask(${myTask.id})`)
 
         //création d'un élément affichant le titre de notre tâche
         let titleField = document.createElement("h3")
@@ -94,7 +92,7 @@ function deleteSelectedTask() {
     if (selectedTasksElements.length !== 0) {
         document.getElementById("addButton").disabled = false;
         selectedTasksElements.forEach(selectedTask => {
-            let objectToDelete = taskListOfObject1.find((myObject) => myObject.getCreationDate() == selectedTask.id)
+            let objectToDelete = taskListOfObject1.find((myObject) => myObject.id == selectedTask.id)
             taskListOfObject1 = taskListOfObject1.filter( (i) => {return i !== objectToDelete}
             )
             selectedTask.remove()
@@ -108,7 +106,7 @@ function moveSelectedTask(shouldErase){
         document.getElementById("addButton").disabled = false;
         selectedTasksElements.forEach(selectedTaskElement => {
             if(selectedTaskElement.parentElement.id === "taskListDiv2"){
-                let taskObjectToMove = taskListOfObject2.find((myObject) => myObject.getCreationDate() == selectedTaskElement.id)
+                let taskObjectToMove = taskListOfObject2.find((myObject) => myObject.id == selectedTaskElement.id)
                 taskListOfObject1.push(taskObjectToMove)
                 document.getElementById('taskListDiv1').appendChild(selectedTaskElement)
                 if(shouldErase === true){
@@ -116,7 +114,7 @@ function moveSelectedTask(shouldErase){
                 }
             }
             else{
-                let taskObjectToMove = taskListOfObject1.find((myObject) => myObject.getCreationDate() == selectedTaskElement.id)
+                let taskObjectToMove = taskListOfObject1.find((myObject) => myObject.id == selectedTaskElement.id)
                 taskListOfObject2.push(taskObjectToMove)
                 document.getElementById('taskListDiv2').appendChild(selectedTaskElement)
                 if(shouldErase === true){

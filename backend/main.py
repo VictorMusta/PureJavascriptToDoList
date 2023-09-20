@@ -41,14 +41,14 @@ def update_task():
     return TaskFunctions.update_task(request.get_json())
 
 
-@app.get("/tasks")
-def get_all_task():
-    return TaskFunctions.get_all_task()
-
-
 @app.delete("/task")
 def delete_task():
     return TaskFunctions.delete_task(request.get_json())
+
+
+@app.get("/tasks")
+def get_all_task():
+    return TaskFunctions.get_all_task()
 
 
 @app.delete("/tasks")
